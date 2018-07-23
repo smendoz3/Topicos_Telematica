@@ -6,7 +6,7 @@ var session    = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 
 //connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/DBProyecto1');
+mongoose.connect('mongodb://localhost/DBProyecto1');
 var db = mongoose.connection;
 
 
