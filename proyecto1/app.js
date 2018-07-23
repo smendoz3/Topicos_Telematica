@@ -9,10 +9,17 @@ var MongoStore = require('connect-mongo')(session);
 mongoose.connect('mongodb://localhost/DBProyecto1');
 var db = mongoose.connection;
 
+const connectWithRetry = () => {
+  console.log('conexion con intento');
+  return mongoose.connect(config.db.mongo.uri, config.db.mongo.opts);
+}
 
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function () {
-  
+db.on('error', err =>{
+  console.log('error de conexion: ${err}')
+  setTimeout(connectWithRetry,5000)
+});
+db.on('connected',  () => {
+  console.log('conexion establecida')
 });
 
 
