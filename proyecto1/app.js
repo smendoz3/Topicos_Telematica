@@ -9,13 +9,30 @@ var MongoStore = require('connect-mongo')(session);
 mongoose.connect('mongodb://localhost/DBProyecto1');
 var db = mongoose.connection;
 
-const connectWithRetry = () => {
-  console.log('conexion con intento');
-  return mongoose.connect(config.db.mongo.uri, config.db.mongo.opts);
+
+const options = {
+  autoIndex: false, // Don't build indexes
+  reconnectTries: 30, // Retry up to 30 times
+  reconnectInterval: 500, // Reconnect every 500ms
+  poolSize: 10, // Maintain up to 10 socket connections
+  // If not connected, return errors immediately rather than waiting for reconnect
+  bufferMaxEntries: 0
 }
 
+const connectWithRetry = () => {
+  console.log('MongoDB connection with retry')
+  mongoose.connect("mongodb://mongo:27017/DBProyecto1", options).then(()=>{
+    console.log('MongoDB is connected')
+  }).catch(err=>{
+    console.log('MongoDB connection unsuccessful, retry after 5 seconds.')
+    setTimeout(connectWithRetry, 5000)
+  })
+}
+
+//connectWithRetry()
+
 db.on('error', err =>{
-  console.log('error de conexion: ${err}')
+  console.log('error de conexion')
   setTimeout(connectWithRetry,5000)
 });
 db.on('connected',  () => {
