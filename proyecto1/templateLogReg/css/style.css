@@ -29,7 +29,8 @@ img{max-width:100%;}
 /*--end reset--*/
 body {
     font-family: 'Jura', sans-serif;
-    background:#660c81;
+    background:#b4a1b983;
+    
 }
 h1 {
     color: rgb(255, 255, 255);
@@ -50,13 +51,13 @@ h1 {
 
 /*--signin-form--*/
 .w3 {
-    float: left;
-    width: 48%;
+    float: none;
+    width: 100%;
     margin-right: 4%;
 }
 .agile {
-    float: right;
-    width: 48%;
+    float: none;
+    width: 100%;
 }
 .signin-form {
     background: url(../images/banner1.jpg)no-repeat 0px 0px;
