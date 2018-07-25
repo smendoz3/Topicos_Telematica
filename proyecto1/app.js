@@ -6,9 +6,8 @@ var session    = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 
 //connect to MongoDB
-mongoose.connect('mongodb://localhost/DBProyecto1');
+mongoose.connect('mongodb://mongo-server:27017/DBProyecto1');
 var db = mongoose.connection;
-
 
 // const options = {
 //   autoIndex: false, // Don't build indexes
@@ -31,12 +30,9 @@ var db = mongoose.connection;
 
 //connectWithRetry()
 
-db.on('error', err =>{
-  console.log('error de conexion')
-  //setTimeout(connectWithRetry,5000)
-});
-db.once('connected',  () => {
-  console.log('conexion establecida')
+db.on('error',console.error.bind(console,'error de conexion'));
+db.once('open', function() {
+
 });
 
 

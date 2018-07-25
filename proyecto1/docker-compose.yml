@@ -21,6 +21,7 @@ services:
     container_name: mongo-server
     image: mongo
     volumes:
-      - ./data:/data/db
-    ports:
-    - "27017:27017"
+      - ./mongodata:/data/db
+    expose:
+      - 27017
+    #- "27017:27017"
