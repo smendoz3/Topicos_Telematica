@@ -8,6 +8,14 @@ var UserSchema = new mongoose.Schema({
   }
 });
 
+
+var locationSchema = new mongoose.Schema({
+  map:{
+    user:String,
+    lat: Array,
+    long: Array
+  }
+});
 // generating a hash
 UserSchema.methods.generateHash = function (password) {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
