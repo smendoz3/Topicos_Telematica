@@ -7,9 +7,9 @@
         </head>
     <body class ="map">
 
-        <div class="container" style="content-justify: center">
-                <h1 class="font" id="Mapa" style="font-size: 250%; color:whitesmoke"  >Haz click en el boton para obtener tu ubicacion</h1>
-                <button class="buttonMap" style="vertical-align:middle" onclick="getLocation()"><span>Obtener Ubicacion</span></button>
+        <div class="container">
+                <h1 class="font" id="Mapa" style="font-size: 250%; color:whitesmoke"  >Haz click en el botón para obtener tu ubicación</h1>
+                <button class="buttonMap" style="vertical-align:middle" onclick="getLocation()"><span>Obtener Ubicación</span></button>
         </div>
         <div id="mapholder"></div>
 
@@ -30,8 +30,8 @@
             var latlon = new google.maps.LatLng(lat, lon)
             var mapholder = document.getElementById('mapholder');
             mapholder.style.borderStyle = "double";
-            mapholder.style.height = '550px';
-            mapholder.style.width = '1350px';
+            mapholder.style.height = '500px';
+            mapholder.style.width = '1250px';
     
 
             var myOptions = {

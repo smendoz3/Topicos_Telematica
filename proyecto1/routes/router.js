@@ -49,7 +49,7 @@ module.exports = (app, passport) => {
     return res.redirect('/');
   }
 
-  app.get('/map',isLoggedIn,(req,res)=>{
+  app.get('/map',(req,res)=>{
     res.render('map',{
       user:req.user
     });

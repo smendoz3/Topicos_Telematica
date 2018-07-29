@@ -1,3 +1,9 @@
+body {
+	padding: 50px;
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	text-align: center
+  }
+
 .login {
 	background: #56ab2f;  /* fallback for old browsers */
 	background: -webkit-linear-gradient(to right,black, black);  /* Chrome 10-25, Safari 5.1-6 */
@@ -28,10 +34,11 @@
 }
 
 .buttonMap{
-	background-color: #502fab;
+	background-color: #59a58d;
 	color: black;
-	border: 2px solid #502fab;
+	border: 2px solid white;
 	padding: 20px 40px;
+	font-weight: bold;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -41,32 +48,9 @@
   	margin: 5px;
 }
 
-.buttonMap span {
-	cursor: pointer;
-	display: inline-block;
-	position: relative;
-	transition: 0.5s;
-  }
-
-  .buttonMap span:after {
-	content: '\00bb';
-	position: absolute;
-	opacity: 0;
-	top: 0;
-	right: -20px;
-	transition: 0.5s;
-  }
-  
-  
-
-.buttonMap:hover span {
-	padding-right: 25px;
-	
-}
-
-.buttonMap:hover span::after{
-	opacity: 1;
-	right: 0;
+.buttonMap:hover{
+	background-color: white;
+	color:#59a58d;
 }
 
 .centerMap {
