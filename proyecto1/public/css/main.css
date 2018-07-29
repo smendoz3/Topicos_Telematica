@@ -1,19 +1,19 @@
 .login {
 	background: #56ab2f;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #004e92, #842fab);  /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, #004e92, #842fab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: -webkit-linear-gradient(to right,black, black);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right,black, black); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .signup {
 	background: #000428;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #004e92, #842fab);  /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, #004e92, #842fab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: -webkit-linear-gradient(to right,black, black);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right,black, black); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .map{
 	background: #000428;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #004e92, #842fab);  /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, #004e92, #842fab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: -webkit-linear-gradient(to right, black, black);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, black,black); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .button{
@@ -73,4 +73,7 @@
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+}
+.font{
+	font-family: 'Comfortaa', cursive;
 }
