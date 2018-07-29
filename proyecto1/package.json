@@ -20,6 +20,7 @@
     "ejs": "^2.6.1",
     "express": "^4.15.2",
     "express-session": "^1.15.2",
+    "jquery": "^3.3.1",
     "mongoose": "^4.13.14",
     "morgan": "^1.9.0",
     "nodemon": "^1.11.0",

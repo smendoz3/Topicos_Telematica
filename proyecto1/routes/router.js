@@ -11,8 +11,8 @@ module.exports = (app, passport) => {
   });
   
   app.post('/login',passport.authenticate('local-login',{
-    successRedirect:'/profile',
-    failureRedirect:'/registrar',
+    successRedirect:'/map',
+    failureRedirect:'/login',
     failureFlash:true  
   })); 
 
@@ -25,7 +25,7 @@ module.exports = (app, passport) => {
   });
 
   app.post('/registrar',passport.authenticate('local-registro', {
-    successRedirect:'/profile',
+    successRedirect:'/login',
     failureRedirect:'/registrar',
     failureFlash:true
 
@@ -48,4 +48,10 @@ module.exports = (app, passport) => {
     }
     return res.redirect('/');
   }
+
+  app.get('/map',isLoggedIn,(req,res)=>{
+    res.render('map',{
+      user:req.user
+    });
+  });
 }
