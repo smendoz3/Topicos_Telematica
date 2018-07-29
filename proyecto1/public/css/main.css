@@ -9,3 +9,68 @@
 	background: -webkit-linear-gradient(to right, #004e92, #842fab);  /* Chrome 10-25, Safari 5.1-6 */
 	background: linear-gradient(to right, #004e92, #842fab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+
+.map{
+	background: #000428;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #004e92, #842fab);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #004e92, #842fab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.button{
+	background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 30px 64px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.buttonMap{
+	background-color: #502fab;
+	color: black;
+	border: 2px solid #502fab;
+	padding: 20px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+	font-size: 16px;
+	transition: all 0.5s;
+  	cursor: pointer;
+  	margin: 5px;
+}
+
+.buttonMap span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+  }
+
+  .buttonMap span:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+  }
+  
+  
+
+.buttonMap:hover span {
+	padding-right: 25px;
+	
+}
+
+.buttonMap:hover span::after{
+	opacity: 1;
+	right: 0;
+}
+
+.centerMap {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
