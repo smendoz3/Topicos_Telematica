@@ -8,8 +8,9 @@
     <body class ="map">
 
         <div class="container">
-                <h1 class="font" id="Mapa" style="font-size: 250%; color:whitesmoke"  >Haz click en el botón para obtener tu ubicación</h1>
+                <h1 class="font" id="Mapa" style="font-size: 250%; color:whitesmoke"  >Obten tu ubicación actual</h1>
                 <button class="buttonMap" style="vertical-align:middle" onclick="getLocation()"><span>Obtener Ubicación</span></button>
+                <button class="buttonMap" style="vertical-align:right" onclick="safePosition()"><span>Guardar Ubicación</span></button>
         </div>
         <div id="mapholder"></div>
 
@@ -27,11 +28,12 @@
         function showPosition(position) {
             var lat = position.coords.latitude;
             var lon = position.coords.longitude;
-            var latlon = new google.maps.LatLng(lat, lon)
+            var latlon = new google.maps.LatLng(lat, lon);
+            console.log("latlon:" + latlon);
             var mapholder = document.getElementById('mapholder');
             mapholder.style.borderStyle = "double";
             mapholder.style.height = '500px';
-            mapholder.style.width = '1250px';
+            //mapholder.style.width = '1250px';
     
 
             var myOptions = {
@@ -45,13 +47,14 @@
             var marker = new google.maps.Marker({position:latlon,map:map,title:"Estas aqui!"});
         }
 
+
         function showError(error) {
             switch(error.code) {
                 case error.PERMISSION_DENIED:
-                    x.innerHTML = "El usuario no autorizo su geolocalizacion"
+                    x.innerHTML = "El usuario no autorizó su geolocalizacion"
                     break;
                 case error.POSITION_UNAVAILABLE:
-                    x.innerHTML = "La informacion de la ubicacion no esta disponible"
+                    x.innerHTML = "La informacion de la ubicación no esta disponible"
                     break;
                 case error.TIMEOUT:
                     x.innerHTML = "The request to get user location timed out."
