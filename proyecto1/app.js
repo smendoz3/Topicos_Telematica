@@ -16,6 +16,14 @@ mongoose.connect(url,{
   useMongoClient:true
 });
 
+
+
+var db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error"));
+db.once("open", function(callback){
+  console.log("Connection Succeeded");
+});
+
 require('./config/passport')(passport);
 //configuraciones
 app.set('port',process.env.PORT || 3000);
