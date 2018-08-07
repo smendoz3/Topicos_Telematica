@@ -11,27 +11,19 @@ var cookieParser = require('cookie-parser');
 var module       = require('module');
 var passport     = require('passport');
 
-// const { url } =require('./config/database');
-// mongoose.connect(url,{
-//   useMongoClient:true
+const { url } =require('./config/database');
+mongoose.connect(url,{
+  useMongoClient:true
+});
+
+// var DATABASE_URL = process.env.DATABASE_URL || 'localhost';
+// mongoose.connect(`mongodb://${DATABASE_URL}/Proyecto1DB`);
+
+// var db = mongoose.connection;
+// db.on("error", console.error.bind(console, "connection error"));
+// db.once("open", function(callback){
+//   console.log("Connection Succeeded");
 // });
-
-var DATABASE_URL = process.env.DATABASE_URL || 'localhost';
-mongoose.connect(`mongodb://${DATABASE_URL}/Proyecto1DB`);
-
-var connect = function (){
-  var db = mongoose.connection;
-  db.on("error", console.error.bind(console, "connection error"));
-  db.once("open", function(callback){
-    console.log("Connection Succeeded");
-  });
-  db.then(function(){
-    console.log("success");
-  }).catch(function(){
-    connect();
-  });
-};
-connect();
 
 require('./config/passport')(passport);
 //configuraciones
