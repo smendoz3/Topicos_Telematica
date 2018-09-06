@@ -5,11 +5,10 @@
             <title>Mapa</title>
             <% include headers/head %>
         </head>
-    <body class ="map">
-
+    <body class ="map"  onload="getLocation()">
         <div class="container">
                 <h1 class="font" id="Mapa" style="font-size: 250%; color:whitesmoke"  >Obten tu ubicación actual</h1>
-                <button class="buttonMap" style="vertical-align:middle" onclick="getLocation()"><span>Obtener Ubicación</span></button>
+                <!-- <button class="buttonMap" style="vertical-align:middle" onclick="getLocation()"><span>Obtener Ubicación</span></button> -->
                 <button class="buttonMap" style="vertical-align:right" onclick="safePosition()"><span>Guardar Ubicación</span></button>
         </div>
         <div id="mapholder"></div>
