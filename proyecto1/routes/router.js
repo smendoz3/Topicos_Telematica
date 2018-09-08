@@ -1,13 +1,46 @@
+//app.get('/', cache(10), (req, res) => {
+  //setTimeout(() => {
+    //res.render('index', { title: 'Hey', message: 'Hello there', date: new Date()})
+  //}, 5000) //setTimeout was used to simulate a slow processing request
+//})
+var mcache = require('memory-cache');
+
+var cache = (duration) => {
+  return (req, res, next) => {
+    let key = '__express__' + req.originalUrl || req.url
+    let cachedBody = mcache.get(key)
+    console.log("Connection Succeeded1");
+    if (cachedBody) {
+      res.send(cachedBody)
+      console.log("Connection Succeeded2");
+      return
+    } else {
+      res.sendResponse = res.send
+      res.send = (body) => {
+        mcache.put(key, body, duration * 1000);
+        res.sendResponse(body)
+        console.log("Connection Succeeded3");
+      }
+      console.log("Connection Succeeded4");
+      next()
+    }
+  }
+}
+
 module.exports = (app, passport) => {
  
-  app.get('/',(req,res) => {
-    res.render('index')
-  })
+  app.get('/', cache(10), (req,res) => {
+    setTimeout(() => {
+      res.render('index')
+    }, 5000)
+  });
 
-  app.get('/login',(req,res) => {
-    res.render('login', {
-      message: req.flash('mensajeLogin')
-    });
+  app.get('/login', cache(10), (req,res) => {
+    setTimeout(() => {
+      res.render('login', {
+        message: req.flash('mensajeLogin')
+      });
+    }, 5000)  
   });
   
   app.post('/login',passport.authenticate('local-login',{
@@ -18,10 +51,12 @@ module.exports = (app, passport) => {
 
   
 
-  app.get('/registrar',(req,res) => {
-    res.render('registrar',{
-      message: req.flash('mensajeRegistro')
-    });
+  app.get('/registrar', cache(10), (req,res) => {
+    setTimeout(() => {
+      res.render('registrar',{
+        message: req.flash('mensajeRegistro')
+      });
+    }, 5000)  
   });
 
   app.post('/registrar',passport.authenticate('local-registro', {
@@ -31,15 +66,19 @@ module.exports = (app, passport) => {
 
   }));
 
-  app.get('/profile',isLoggedIn,(req,res) => {
-    res.render('profile',{
-      user:req.user
-    });
+  app.get('/profile',isLoggedIn, cache(10), (req,res) => {
+    setTimeout(() => {
+      res.render('profile',{
+        user:req.user
+      });
+    }, 5000) 
   });
 
-  app.get('/logout',(req,res) => {
-    req.logout();
-    res.redirect('/');
+  app.get('/logout', cache(10), (req,res) => {
+    setTimeout(() => {
+      req.logout();
+      res.redirect('/');
+    }, 5000) 
   });
 
   function isLoggedIn(req,res,next){
@@ -49,9 +88,11 @@ module.exports = (app, passport) => {
     return res.redirect('/');
   }
 
-  app.get('/map',(req,res)=>{
-    res.render('map',{
-      user:req.user
-    });
+  app.get('/map', cache(10), (req,res)=>{
+    setTimeout(() => {
+      res.render('map',{
+        user:req.user
+      });
+    }, 5000)
   });
 }

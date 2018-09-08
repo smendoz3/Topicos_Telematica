@@ -11,6 +11,7 @@ var cookieParser = require('cookie-parser');
 var module       = require('module');
 var passport     = require('passport');
 var compression  = require('compression');
+var mcache = require('memory-cache');
 
 const { url } =require('./config/database');
 mongoose.connect(url,{
