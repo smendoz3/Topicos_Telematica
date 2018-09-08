@@ -10,6 +10,7 @@ var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
 var module       = require('module');
 var passport     = require('passport');
+var compression  = require('compression');
 
 const { url } =require('./config/database');
 mongoose.connect(url,{
@@ -31,6 +32,7 @@ app.set('port',process.env.PORT || 3000);
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','ejs');
 //middlewares
+app.use(compression());
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended:false}));
