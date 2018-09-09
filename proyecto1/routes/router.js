@@ -79,10 +79,10 @@ module.exports = (app, passport) => {
   }
 
   app.get('/map', cache(10), (req,res)=>{
-    setTimeout(() => {
+    //setTimeout(() => {
       res.render('map',{
         user:req.user
       });
-    }, 5000)
+    //}, 5000)
   });
 }
