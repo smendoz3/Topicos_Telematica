@@ -26,7 +26,7 @@ mongoose.connect(url,{
 // db.once("open", function(callback){
 //   console.log("Connection Succeeded");
 // });
-
+app.use(express.static(path.join(__dirname, './letsencrypt-site')));
 require('./config/passport')(passport);
 //configuraciones
 app.set('port',process.env.PORT || 3000);
