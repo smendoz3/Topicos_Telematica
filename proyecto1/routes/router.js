@@ -1,8 +1,7 @@
-//app.get('/', cache(10), (req, res) => {
-  //setTimeout(() => {
-    //res.render('index', { title: 'Hey', message: 'Hello there', date: new Date()})
-  //}, 5000) //setTimeout was used to simulate a slow processing request
-//})
+var express = require('express');
+var Auth0Strategy = require('passport-auth0');
+var passport = require('passport');
+var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
 var mcache = require('memory-cache');
 
 var cache = (duration) => {
@@ -30,45 +29,37 @@ var cache = (duration) => {
 module.exports = (app, passport) => {
  
   app.get('/', (req,res) => {
-      res.render('index')
+    if(req.isAuthenticated()){
+      res.redirect("/map");
+    }
+    res.redirect('/login');
   });
 
-  app.get('/login', (req,res) => {
-      res.render('login', {
-        message: req.flash('mensajeLogin')
-      }); 
-  });
-  
-  app.post('/login',passport.authenticate('local-login',{
-    successRedirect:'/map',
-    failureRedirect:'/login',
-    failureFlash:true  
-  })); 
-
-  
-
-  app.get('/registrar', (req,res) => {
-      res.render('registrar',{
-        message: req.flash('mensajeRegistro')
-      });
+  app.get('/login',
+    passport.authenticate('auth0', {scope: 'openid email profile'}), function (req, res) {
+    res.redirect("/map");
   });
 
-  app.post('/registrar',passport.authenticate('local-registro', {
-    successRedirect:'/login',
-    failureRedirect:'/registrar',
-    failureFlash:true
-
-  }));
-
-  app.get('/profile',isLoggedIn, (req,res) => {
-      res.render('profile',{
-        user:req.user
-      });
+  app.get('/callback',
+  passport.authenticate('auth0', { failureRedirect: '/login' }),
+  function(req, res) {
+    if (!req.user) {
+      throw new Error('user null');
+    }
+    res.redirect("/profile");
   });
 
-  app.get('/logout', (req,res) => {
-      req.logout();
-      res.redirect('/');
+  app.get('/profile', ensureLoggedIn, function(req, res, next) {
+    //console.log(req.user);
+    res.render('profile', {
+      user: req.user ,
+      userProfile: JSON.stringify(req.user, null, '  ')
+    });
+  });
+
+  app.get('/logout', (req, res) => {
+    req.logout();
+    throw new Error('Sesión Cerrada');
   });
 
   function isLoggedIn(req,res,next){

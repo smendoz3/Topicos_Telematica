@@ -10,28 +10,17 @@
     <div class="container">
       <header class="text-center">
         <h1>Profile Page</h1>
+        <p>
+          <strong>id</strong> : <%= user.id %> <br>
+          <strong>email</strong> : <%= user.displayName %> <br>
+        </p>
+        <a href="/map" class="btn btn-light btn-sm">
+          Map
+        </a>
         <a href="/logout" class="btn btn-light btn-sm">
           Logout
         </a>
       </header>
-      <hr>
-      <div class="container">
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h3 class="card-title"><span class="fa fa-user"></span> Local</h3>
-              <p>
-                <strong>id</strong> : <%= user._id %> <br>
-                <strong>email</strong> : <%= user.local.email %> <br>
-                <strong>password</strong> : <%= user.local.password %>
-              </p>
-              <a href="/logout" class="btn btn-light btn-sm">
-                Logout
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </body>
 </html>
