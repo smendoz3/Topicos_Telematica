@@ -58,7 +58,8 @@ module.exports = (app, passport) => {
 
   app.get('/logout', (req, res) => {
     req.logout();
-    throw new Error('Sesión Cerrada');
+    res.redirect('https://smendoz.auth0.com/v2/logout?returnTo=https%3A%2F%2Fwww.carrea2.tk&client_id=JDQ85x_CXjcwcwB1Q39CTCgG6hx8Z5G4');
+    //throw new Error('Sesión Cerrada');
   });
 
   function isLoggedIn(req,res,next){

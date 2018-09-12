@@ -13,12 +13,12 @@
 			<div class="card-body">
 
 				<h1><span class="fa fa-block"></span>Inicio</h1>
-				<% if (user) { %>
-                    <p>Bienvenido</p>
-                    <a href="/map" class="btn btn-light">
+				<% if (this.user) { %>
+				    <p>Bienvenido</p>
+				    <a href="/map" class="btn btn-light">
 					<span class="fa fa-user"></span> Mapa
 				    </a>
-                <% } else {%>
+                                <% } else {%>
 				
 				    <a href="/login" class="btn btn-light">
 					<span class="fa fa-user"></span> Inicio de Sesion

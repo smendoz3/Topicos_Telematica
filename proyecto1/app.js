@@ -70,7 +70,7 @@ app.use(session({
   secret:'a new hope',
   cookie: {},
   resave:false,
-  saveUninitialized:true
+  saveUninitialized:false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
