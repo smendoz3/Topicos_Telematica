@@ -6,20 +6,24 @@
 	<title>Inicio</title>
 	<% include headers/head %>
 </head>
-
 <body>
 
 	<div class="container">
 		<div class="card text-center mt-5">
 			<div class="card-body">
+
 				<h1><span class="fa fa-block"></span>Inicio</h1>
-				<p>Bienvenido</p>
-				<a href="/login" class="btn btn-light">
+				<% if (user) { %>
+                    <p>Bienvenido</p>
+                    <a href="/map" class="btn btn-light">
+					<span class="fa fa-user"></span> Mapa
+				    </a>
+                <% } else {%>
+				
+				    <a href="/login" class="btn btn-light">
 					<span class="fa fa-user"></span> Inicio de Sesion
-				</a>
-				<a href="/registrar" class="btn btn-light">
-					<span class="fa fa-user"></span> Registro
-				</a>
+				    </a>
+				<% } %>
 			</div>
 		</div>
 	</div>

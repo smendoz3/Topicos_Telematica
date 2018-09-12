@@ -29,10 +29,9 @@ var cache = (duration) => {
 module.exports = (app, passport) => {
  
   app.get('/', (req,res) => {
-    if(req.isAuthenticated()){
-      res.redirect("/map");
-    }
-    res.redirect('/login');
+    res.render('index', {
+      user: req.user
+    });
   });
 
   app.get('/login',
